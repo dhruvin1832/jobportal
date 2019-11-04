@@ -1,0 +1,181 @@
+{% extends 'job/company_details_base.html' %}
+{% load static %}
+
+{% block content %}
+       
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'css/css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+
+    <style type="text/css">
+           /*.div1 {
+          width: 1025px;
+          height: 40px;
+          border: 1px;
+          font-size: 20px;
+          box-sizing: border-box;
+          margin-left: 10px;
+          margin-top: 5px;
+          padding-left: 10px;
+          background-color: #3498DB;
+          color: black;
+}
+.date{
+  color: red;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.p{
+  padding-left: 20px;
+}
+.main_p{
+  width: 1050px;
+  border: 5px groove white;
+  box-sizing: border-box;
+  background-color: #DCDCDC;
+}*/
+.date{
+  color: red;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.flex-container {
+  display: flex;
+  /*background-color: DodgerBlue;*/
+}
+
+.flex-container > div {
+  margin-left: 300px;
+  background-color:#e5e3ff;
+  width: 450px;
+  
+  padding: 20px;
+  font-size: 30px;
+}
+.company{
+  margin-left: 250px;
+}
+.img{
+  background-repeat: no-repeat;
+}
+
+    </style> 
+    <div class="img" style="background-image: url('{% static 'css/images/bg17.jpg'%}');">
+    <div class="overlay"></div>
+     <div class="container">
+       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+         <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+           <p class="" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></p>
+            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color: black";><div class="company">Company Details</div></h1>
+           
+              <div class="col-lg-10">
+                <div class="flex-container">
+                  <div class="main_p">
+                    <div class="div1" style="color: black";><a href="#"><b>{{job.company_name}}&nbspHiring&nbspFor&nbsp{{ job.title }}<br>
+                      <div style="font-size: 20px";> </b></div>
+                        <p class="p" style="color: black";> {{ job.description }}<br><br>
+                             Developers with&nbsp{{job.experiance}}&nbsp of experience at&nbsp {{ job.location }}. It would be offering &nbsp {{ job.salary }} &nbsp based on their performance and we have &nbsp {{ job.vacancies }} Vacancies <br>
+                             <div class="date">Last apply date &nbsp{{ job.last_date }}</div>
+                        </p>
+                        {% if myuser %}
+                          {% ifequal myuser applyjob.myuser %}
+                            <a href="{% url 'apply' pk1=job.pk pk2=myuser.pk %}" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Applied Already</a>
+                          {% else %}
+                            <a href="{% url 'apply' pk1=job.pk pk2=myuser.pk %}" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Apply</a>
+                          {% endifequal %}
+                        {% else %}
+                          <div class="dropdown">&nbsp&nbsp
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Want a Job</button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                              </div>
+                          </div>
+                        {% endif %}
+                      </div>    
+                    </div>
+                  </div>
+                </div>
+              </div>
+         </div>
+       </div>
+     </div>
+    </div>
+
+     <div class="footer" style="background-color:#595855";>
+      <div class="footer_text">
+        <br>
+        <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>About</h2>
+              <p>The company's spirit of entrepreneurship has also been evident in the investments it has made in early stage companies/start-up ventures to tap into the growing and vibrant Indian internet market.</p>
+             <!--  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2" style="color: white";>Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2" style="color: white";>Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span>301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</li>
+                    <li><span class="icon icon-phone"></span>+91 9924790456</li>
+                    <li><span class="icon icon-envelope"></span>careerport19@gmail.com</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>                       
+             
+            
+  </head>
+  </html>
+{% endblock %}      

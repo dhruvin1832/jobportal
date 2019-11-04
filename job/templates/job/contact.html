@@ -1,0 +1,116 @@
+{% extends 'job/base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+
+      <div class="container">
+         <div class="col-md-12 mb-4"><div style="margin-left: 400px";>
+            <h2 class="h3">Contact Information</h2></div>
+          </div>
+        <div class="row d-flex mb-5 contact-info">
+         
+          <div class="w-100"></div>
+          <div class="col-md-6">
+            <p><span>Address:</span> 301 MeghMalhar Complex, Sector 11, Next to Cinemax PVR Cinemas, Gujarat</p>
+        
+        
+            <p><span>Phone:</span> <a href="tel://9924790456">+91 9924790456</a></p>
+        
+            <p><span>Email:</span> <a href="careerport19@gmail.com">careerport19@gmail.com</a></p>
+          
+          <!-- <div class="col-md-3">
+            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+          </div> -->
+        </div>
+        <div class="row block-9">
+          <div class="col-md-12 order-md-last d-flex">
+            <form action="{% url 'contact' %}" class="bg-white p-5 contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name="name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email" name="contact_email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject" name="subject">
+              </div>
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message" name="message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5" >
+              </div>
+            </form>
+          
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+		 <div class="footer" style="background-color:#595855";>
+      <div class="footer_text">
+        <br>
+        <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>About</h2>
+              <p>The company's spirit of entrepreneurship has also been evident in the investments it has made in early stage companies/start-up ventures to tap into the growing and vibrant Indian internet market.</p>
+             <!--  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2" style="color: white";>Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2" style="color: white";>Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span>301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</li>
+                    <li><span class="icon icon-phone"></span>+91 9924790456</li>
+                    <li><span class="icon icon-envelope"></span>careerport19@gmail.com</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}  

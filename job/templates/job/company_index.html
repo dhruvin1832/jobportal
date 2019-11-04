@@ -1,0 +1,94 @@
+{% extends 'job/company_base.html' %}
+{% load static %}
+
+{% block content %}
+<html>
+<head>
+
+<style>
+.button
+ {
+
+
+  margin-top: 10px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #C0C0C0;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #C9F6FF}
+
+.button:active {
+  background-color: #C0C0C0;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.button_full{
+  margin-left: 850px;
+}
+.back{
+  background-color: grey;
+  width: 800px;
+
+}
+
+</style>
+
+
+  <br><br>
+
+  <div class="button_full">
+    <button class="button" > <a href="{% url 'post_job' pk=company.pk %}" target="blank"><strong>Post a Job</strong></a></button>
+    <button class="button"><a href="{% url 'view-job' pk=company.pk %}" target="blank"><strong>View Job</strong></a></button>
+    <button class="button"><a href="{% url 'view_candidate' pk=company.pk %}" target="blank"><strong>View Candidate</strong></a></button>
+  </div>
+
+<br><center>  
+<div class="back">
+  <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-client-dashboard" style=" color:white";>
+                            <thead>
+                            <tr>
+                                <th>Candidate Name</th>
+                                <th>Job title</th>
+                                <th>Salary</th>
+                                <th>Location</th>
+                                <th>Company Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for apply in applyjobs %}
+
+                                <tr>
+
+                                    <td>{{ apply.myuser.fname }}</td>
+                                    <td>{{ apply.job.title }}</td>
+                                    <td>{{ apply.job.salary }}</td>
+                                    <td>{{ apply.job.location }}</td>
+                                    
+                                     <td>{{ apply.job.company_name}}</td>
+                                    }
+                                    }
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </tr>
+            </table>
+            </p>
+</div>
+            <br>
+            </div>
+</center>
+</head>
+</html>
+{% endblock %}

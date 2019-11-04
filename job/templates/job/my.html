@@ -1,0 +1,54 @@
+<html>
+<body>
+<div id="countdown"></div>
+<div id="notifier"></div>
+
+<script type="text/javascript">
+
+(function () {
+  function display( notifier, str ) {
+    document.getElementById(notifier).innerHTML = str;
+  }
+
+  function toMinuteAndSecond( x ) {
+    
+    return Math.floor(x=x%60 < 10 ? 0 : x);
+
+  }
+
+
+
+  function setTimer( remain, actions ) {
+
+    var action;
+
+    (function countdown() {
+
+       display("countdown", toMinuteAndSecond(remain));
+
+       if (action = actions[remain]) {
+
+         action();
+
+       }
+
+       if (remain > 0) {
+         remain -= 1;
+         setTimeout(arguments.callee, 1000);
+       }
+    })(); // End countdown
+  }
+
+  setTimer(30, {
+    10: function () { display("notifier", "Just 10 seconds to go"); },
+     5: function () { display("notifier", "5 seconds left");        },
+     0: function () { document.getElementById("form1").submit();       },
+
+  });
+})();
+
+</script>
+<form id="form1">
+</form>
+</body>
+</html>

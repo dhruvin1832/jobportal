@@ -1,0 +1,331 @@
+{% extends 'job/company_details_base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <style>
+        .body{
+
+            background-repeat: no-repeat; 
+            background-size: 1400px;
+
+        } 
+        .header_title{
+            padding-top: 1px;
+            background-color: #4D5266;
+            width: 925px;
+            height: 70px;
+           
+        }
+        .text2{
+          margin-left: 10px;
+          color: white;
+        }     
+        
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function check_contact()
+        {
+            var c=document.registration.contact.value;
+            var reg=/^\d+$/;
+            
+            if(c=="")
+            {
+                
+                document.getElementById("contact").innerHTML="Please Enter Contact No";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                
+                document.getElementById("contact").innerHTML="Please Enter Only Numbers";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(c.length!=10)
+            {
+                
+                document.getElementById("contact").innerHTML="Please Enter 10 Digit Numbers";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                
+                document.getElementById("contact").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+
+        }
+         function check_cname()
+        {
+            
+            var c=document.registration.cname.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("cname").innerHTML="Please Enter Company Name";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                document.getElementById("cname").innerHTML="Please Enter Only Alphabets";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("cname").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_email()
+        {
+            var c=document.registration.email.value;
+            var reg=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            if(c=="")
+            {
+                document.getElementById("email").innerHTML="Please Enter Email";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                document.getElementById("email").innerHTML="Please Enter Valid Email";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("email").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_comments()
+        {
+            var c=document.registration.comments.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("comments").innerHTML="Please Enter Comments";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                document.getElementById("comments").innerHTML="Please Enter Comments";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("comments").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_location()
+        {
+            var c=document.registration.location.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("location").innerHTML="Please Enter Location";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                document.getElementById("location").innerHTML="Please Enter Valid Location";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("location").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_password()
+        {
+            var c=document.registration.password.value;
+            var reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if(c=="")
+            {
+                document.getElementById("password").innerHTML="Please Enter Password";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {
+                document.getElementById("password").innerHTML="Please Enter 8 characters(1-Digit, 1-Upper, 1-Lower, 1-Special)";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("password").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+
+        }
+         function check_cpassword()
+        {
+            var c=document.registration.cpassword.value;
+            var reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if(c=="")
+            {
+                document.getElementById("cpassword").innerHTML="Please Enter Password";
+                document.getElementById("btn").disabled="true";
+            }
+           else if(!reg.test(c))
+            {
+                document.getElementById("cpassword").innerHTML="Please Enter 8 characters(1-Digit, 1-Upper, 1-Lower, 1-Special)";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("cpassword").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+            
+       }
+       
+        
+       
+       
+    </script>
+    </head>
+<body class="body" >
+    <section><div class="bg_image" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <form name='registration' method="POST" action="{% url 'register_company' %}" data-stellar-background-ratio="0.5"  onSubmit="return formValidation();">
+                {% csrf_token %}
+                 <br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                         <div class="header_title">
+                        <h1><div class="text2">Registration</div></h1></div>
+                        <h3>Please fill in this form to create an account.</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="cname"><b>Company name</b></label>
+                        <input type="text" placeholder=" Enter Company name" class="form-control" name="cname" required onblur="check_cname();">
+                        <span id="cname" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder=" Enter email" class="form-control" name="email" required onblur="check_email();">
+                        <span id="email" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="contact"><b>Contact No.</b></label>
+                        <input type="text" placeholder=" Enter contact" class="form-control" name="contact" required onblur="check_contact();">
+                        <span id="contact" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="location"><b>Location</b></label>
+                        <input type="text" placeholder=" Enter location" class="form-control" name="location" onblur="check_location();">
+                        <span id="location" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">    
+                        <label for="comments"><b>Description</b></label>
+                        <textarea rows="5" cols="5" name="comments" placeholder="Enter comments" class="form-control" onblur="check_comments();"></textarea>
+                        <span id="comments" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder=" Enter password" class="form-control" name="password" required onblur="check_password();">
+                        <span id="password" style="color: red"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="cpassword"><b>Confirm Password</b></label>
+                        <input type="password" placeholder=" Enter Confirm password" class="form-control" name="cpassword" required onblur="check_cpassword();">
+                        <span id="cpassword" style="color: red"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+                <div class="container">
+    <div class="row" style="margin-left: 75px";>
+                <div class="col-lg-12 form-group">   
+                      <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit" id="btn" >Sign Up</button><br>If you already have an account <a href="{% url 'login'%}" target="blank"><strong>login</strong></a> instead.
+                </div>
+            </div>
+    </div>
+            </div>
+        </form>
+    </div>
+            </center>
+        </div>
+    </section>
+    <div class="footer" style="background-color:#595855";>
+      <div class="footer_text">
+        <br>
+        <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>About</h2>
+              <p>The company's spirit of entrepreneurship has also been evident in the investments it has made in early stage companies/start-up ventures to tap into the growing and vibrant Indian internet market.</p>
+             <!--  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2" style="color: white";>Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2" style="color: white";>Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span>301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</li>
+                    <li><span class="icon icon-phone"></span>+91 9924790456</li>
+                    <li><span class="icon icon-envelope"></span>careerport19@gmail.com</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+{% endblock %}   
+    

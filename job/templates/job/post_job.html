@@ -1,0 +1,504 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'css/css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+
+    <style>
+        .image{
+            background-repeat: no-repeat;
+            
+            /*background-position: center;*/
+        }
+        .text{
+            padding-left: 20px;
+        }
+        .text1{
+            margin-left: 215px;
+            padding-top: 1px;
+            background-color: #4D5266;
+            width:915px;
+            height: 70px;
+        }
+        .text2{
+          margin-left: 10px;
+          color: white;
+        }
+        .header{
+            background-repeat: no-repeat; 
+            background-size: 575px;
+            color:white;
+            padding-left: 20px; 
+            padding-bottom: 2px;
+            padding-top: -2px; 
+           
+        }
+        .logo{
+        padding-top: 0px;
+        margin-top: -80px;
+        margin-left:-90px;
+      }
+      .header_main{
+        background-color:#8F919B;
+        height: 100px;
+      }
+      .text_nav{
+        padding-left: 350px;
+        margin-top: -60px;
+
+      }
+      
+    </style>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function check_title()
+        {
+            var c=document.jobform.title.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("title").innerHTML="Please Enter Title";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("title").innerHTML="Please Enter Only Alphabets";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("title").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+
+        }
+        function check_description()
+        {
+            var c=document.jobform.description.value;
+            var reg=/^[A-Za-z0-9\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)]+$/;
+            if(c=="")
+            {
+                document.getElementById("description").innerHTML="Please Enter Job Description";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("description").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_location()
+        {            
+            var c=document.jobform.location.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("location").innerHTML="Please Enter location";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("location").innerHTML="Please Enter Only Alphabets";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("location").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_cname()
+        {            
+            var c=document.jobform.cname.value;
+            var reg=/^[A-Za-z]+$/;
+            if(c=="")
+            {
+                document.getElementById("cname").innerHTML="Please Enter Company Nmae";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("cname").innerHTML="Please Enter Only Alphabets";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("cname").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_vacancies()
+        {            
+            var c=document.jobform.vacancies.value;
+            var reg=/^[0-9\\-]+$/;
+            if(c=="")
+            {
+                document.getElementById("vacancies").innerHTML="Please Enter Vacancies";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("vacancies").innerHTML="Please Enter Only Digits";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("vacancies").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_experiance()
+        {            
+            var c=document.jobform.experiance.value;
+            var reg=/^[0-9\\-]+$/;
+            if(c=="")
+            {
+                document.getElementById("experiance").innerHTML="Please Enter experiance";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("experiance").innerHTML="Please Enter Only Digits";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("experiance").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_salary()
+        {            
+            var c=document.jobform.salary.value;
+            var reg=/^[0-9\\k\\K\\-]+$/;
+            if(c=="")
+            {
+                document.getElementById("salary").innerHTML="Please Enter salary";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("salary").innerHTML="Please Enter Only Digits";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("salary").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_url()
+        {            
+            var c=document.jobform.url.value;
+            var reg=/^[http://\\A-Za-z\\.]+$/;
+            if(c=="")
+            {
+                document.getElementById("url").innerHTML="Please Enter url";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("url").innerHTML="Please Enter Validity url";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("url").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        function check_curl()
+        {            
+            var c=document.jobform.company_website.value;
+            var reg=/^[http://\\A-Za-z\\.]+$/;
+            if(c=="")
+            {
+                document.getElementById("company_website").innerHTML="Please Enter Website";
+                document.getElementById("btn").disabled="true";
+            }
+            else if(!reg.test(c))
+            {       
+                document.getElementById("company_website").innerHTML="Please Enter Validity Website";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("company_website").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+        // function check_validity()
+        // {
+        //     var c=document.jobform.last_date.value;
+        //     if(c=="")
+        //     {
+        //         document.getElementById("last_date").innerHTML="Please Enter Last Date";
+        //         document.getElementById("btn").disabled="true";
+        //     }
+        //     else
+        //     {
+        //         document.getElementById("last_date").innerHTML="";
+        //         document.getElementById("btn").disabled="";
+        // }
+        function check_cdescription()
+        {
+            var c=document.jobform.cdescription.value;
+            var reg=/^[A-Za-z0-9\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)]+$/;
+            if(c=="")
+            {
+                document.getElementById("cdescription").innerHTML="Please Enter Company Description";
+                document.getElementById("btn").disabled="true";
+            }
+            else
+            {
+                document.getElementById("cdescription").innerHTML="";
+                document.getElementById("btn").disabled="";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header_main">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        
+          
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-4 form-group">
+               <div class="logo">
+               <img src="{% static 'css/images/logo.png' %}"/></div>
+              </div>
+          </div>
+
+          
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="row">
+              <div class="col-lg-8 form-group">
+                <div class="text_nav">
+            <ul class="navbar-nav ml-auto">
+              
+              {% if myuser %}
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" >Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+              {% else %}
+
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Post a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'new-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login_company' %}">Login</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              
+              </li>
+              {% endif %}
+              
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      </nav>
+    </div>
+ 
+ <div >
+   <br> <section>
+         <div class="row">
+                        <div class="col-lg-12">
+                           
+                                <div class="text1">
+                                  <div class="text2">
+                                    <h1><b>Add a New Position<b></h1>
+                                  </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+    </section>
+    <section> 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <form name="jobform" method="POST" action="{% url 'add_job' pk=company.pk %}" class="job-add-form" onSubmit="return formValidation();">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Job details</h4>
+                            </div>
+                        </div>
+                        
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label for="title"><b>Title</b></label>
+                            <input type="text" placeholder=" Enter Title" class="form-control" name="title" onblur="check_title();">
+                            <span id="title" style="color: red"></span>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-lg-12 form-group">
+                                <label for="text"><b>Job Description</b></label>
+                                <textarea id="text" placeholder="Enter description" name="description" rows="5" class="form-control" onblur="check_description();"></textarea>
+                                <span id="description"  style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 form-group">
+                                <label for="location"><b>Location</b></label>
+                                <input type="text" placeholder=" Enter Location" class="form-control" name="location" onblur="check_location();">
+                                <span id="location" style="color: red"></span>
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <label for="Type">Type</label>
+                                <select id="type" name="Type" placeholder="Choose job type"
+                                        class="form-control select2">
+                                    <option value="1" selected="true">Full time</option>
+                                    <option value="2">Part time</option>
+                                    <option value="3">Internship</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <label for="category">Category</label>
+                                <select id="category" name="category" placeholder="Choose category"
+                                        class="form-control select2">
+                                    <option value="web-design">Web design</option>
+                                    <option value="graphic-design">Graphic design</option>
+                                    <option value="web-development">Web development</option>
+                                    <option value="human-resource">Human Resources</option>
+                                    <option value="support">Support</option>
+                                    <option value="android">Android</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 form-group">
+                                <label for="experiance"><b>Experiance</b></label>
+                                <input type="text" placeholder=" Enter Experiance" class="form-control" name="experiance" onblur="check_experiance();">
+                                <span id="experiance" style="color: red"></span>
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <label for="salary"><b>Salary</b></label>
+                                <input type="text" placeholder=" Enter Salary" class="form-control" name="salary" onblur="check_salary();">
+                                <span id="salary" style="color: red"></span>
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <label for="vacancies"><b>Vacancies</b></label>
+                                <input type="text" placeholder=" Enter Vacancies" class="form-control" name="vacancies" onblur="check_vacancies();">
+                                <span id="vacancies" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label for="apply_url"><b>Apply URL</b><span class="note">(users will apply on your website)</span></label>
+                                <input id="apply_url" name="url" type="url" placeholder="Enter url" class="form-control" onblur="check_url();">
+                                <span id="url" style="color: red"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label for="validity">Validity of the post</label>
+                                <input id="validity" name="last_date" type="date" class="form-control" onblur="check_validity();">
+                                <span id="validity"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Company details</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 form-group">
+                                <label for="cname"><b>Company Name</b></label>
+                                <input type="text" placeholder=" Enter Company Name" class="form-control" name="cname" onblur="check_cname();">
+                                <span id="cname" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 form-group">
+                                <label for="cdescription"><b>Company Description</b></label>
+                                <textarea id="cdescription" placeholder="Enter description" name="cdescription" rows="3" class="form-control" onblur="check_cdescription();"></textarea>
+                                <span id="cdescription"  style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 form-group">
+                                <label for="company_website"><b>Website</b></label>
+                                <input type="url" placeholder=" Enter website" class="form-control" name="company_website" onblur="check_curl();">
+                                <span id="company_website" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkbox text-center" style="text-align: left";>
+                                    <label>
+                                        <input type="checkbox"> I agree with the <a href="#">Terms and conditions</a>.
+                                    </label>
+                                </div>
+                            
+                                </div>
+                        
+                            <div class="col-lg-6 text-center">
+                                <button type="submit" class="btn btn-outline-white-primary" style="border:2px solid black"; ><i class="fa fa-magic"></i>
+                                    Save and publish
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+</body>
+</html>
+
+   

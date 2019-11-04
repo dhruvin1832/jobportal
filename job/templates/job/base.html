@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JobPortal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'css/css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+
+    <style type="text/css">
+      .image{
+        padding-top: 0px;
+        margin-top: -80px;
+        margin-left:-90px;
+      }
+      .header{
+        background-color:#8F919B;
+        height: 100px;
+      }
+      .text{
+        padding-left: 350px;
+        margin-top: -60px;
+
+      }
+      .footer{
+        height: 400px;
+      }
+    </style>
+    <script type="text/javascript">
+      function mydialog()
+        {
+            alert("Your exam starts now");
+        }
+    </script>
+  </head>
+  <body>
+    <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        
+          
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-4 form-group">
+               <div class="image">
+               <img src="{% static 'css/images/logo.png' %}"/></div>
+              </div>
+          </div>
+
+          
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="row">
+              <div class="col-lg-8 form-group">
+                <div class="text">
+            <ul class="navbar-nav ml-auto">
+              
+              {% if myuser %}
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" >Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                {% ifequal myresult None %}
+                <li class="nav-item"><a href="{% url 'mcq' pk=myuser.pk %}"  class="nav-link" onclick="mydialog();">Exam</a></li>
+                {% else %}
+                <li class="nav-item"><a href="#" class="nav-link">Marks:{{myresult}}</a></li>
+                {% endifequal %}
+                {% if myuser %}
+                <li class="nav-item" style="color: white"><a href="{% url 'logout' %}" class="nav-link">Logout&nbsp;&nbsp;&nbsp;&nbsp;[{{myuser.fname}}]</a></li>
+            
+              {% endif %}
+              {% else %}
+
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+               <!--  <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li> -->
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Post a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'new-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login_company' %}">Login</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              
+              </li>
+              {% endif %}
+              
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      </nav>
+    </div>
+    <!-- END nav -->
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('{% static 'css/images/bg_2.jpg'%}');" data-stellar-background-ratio="0.8">
+      <div style="overflow: auto">
+       {% block content %}
+       {% endblock %}
+    </div>
+    </div>    
+   
+
+
+
+    <!-- <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span><span class="text">301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</span></li>
+                    <li><span class="icon icon-phone"></span><span class="text">+91 9924790456</span></li>
+                    <li><span class="icon icon-envelope"></span><span class="text">careerport19@gmail.com</span></li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-md-12 text-center"> 
+<!-- 
+    <p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p> --> -->
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'css/js/jquery.min.js'%}"></script>
+  <script src="{% static 'css/js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'css/js/popper.min.js '%}"></script>
+  <script src="{% static 'css/js/bootstrap.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.easing.1.3.js '%}"></script>
+  <script src="{% static 'css/js/jquery.waypoints.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.stellar.min.js '%}"></script>
+  <script src="{% static 'css/js/owl.carousel.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.magnific-popup.min.js '%}"></script>
+  <script src="{% static 'css/js/aos.js '%}"></script>
+  <script src="{% static 'css/js/jquery.animateNumber.min.js '%}"></script>
+  <script src="{% static 'css/js/bootstrap-datepicker.js '%}"></script>
+  <script src="{% static 'css/js/jquery.timepicker.min.js '%}"></script>
+  <script src="{% static 'css/js/scrollax.min.js '%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'css/js/google-map.js'%}"></script>
+  <script src="{% static 'css/js/main.js'%}"></script>
+    
+  </body>
+</html>

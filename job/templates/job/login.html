@@ -1,0 +1,256 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'css/css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+    <script type="text/javascript">
+       function mydialog()
+        {   
+          
+            alert("You have sucessfully logged in");
+        }
+    </script>
+    <style>
+        .image{
+            background-repeat: no-repeat;
+            
+            /*background-position: center;*/
+        }
+        .text{
+            padding-left: 20px;
+        }
+        .text1{
+            
+            padding-top: 1px;
+            background-color: #4D5266;
+            width: 550px;
+            height: 70px;
+        }
+        .text2{
+          margin-left: 10px;
+          color: white;
+        }
+        .header{
+            background-repeat: no-repeat; 
+            background-size: 575px;
+            color:white;
+            padding-left: 20px; 
+            padding-bottom: 2px;
+            padding-top: -2px; 
+           
+        }
+        .logo{
+        padding-top: 0px;
+        margin-top: -80px;
+        margin-left:-90px;
+      }
+      .header_main{
+        background-color:#8F919B;
+        height: 100px;
+      }
+      .text_nav{
+        padding-left: 350px;
+        margin-top: -60px;
+
+      }
+      
+    </style>
+    <title></title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<body>
+     <div class="header_main">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        
+          
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-4 form-group">
+               <div class="logo">
+               <img src="{% static 'css/images/logo.png' %}"/></div>
+              </div>
+          </div>
+
+          
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="row">
+              <div class="col-lg-8 form-group">
+                <div class="text_nav">
+            <ul class="navbar-nav ml-auto">
+              
+              {% if myuser %}
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" >Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="{% url 'mcq' pk=myuser.pk %}"  class="nav-link">MCQ Test</a></li>
+              {% else %}
+
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Post a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'new-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login_company' %}">Login</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              
+              </li>
+              {% endif %}
+              
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      </nav>
+    </div>
+    <section><div class="bg_image" >
+        <br><br><br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <form name='registration' method="POST" action="{% url 'index' %}" data-stellar-background-ratio="0.5"  onSubmit="return formValidation();" >
+                {% csrf_token %}
+                
+                    <div class="row">
+                        <div class="col-lg-12">
+                           
+                                <div class="text1">
+                                  <div class="text2">
+                                    <h1><b>Login<b></h1>
+                                  </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                    
+                        <div class="text" >
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <br>
+                                <label for="email"><b>Email</b></label></td>
+                                <input type="text" placeholder="Enter Email" name="email" class="form-control" required onblur="check_email();">
+                                <span id="email"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password"  class="form-control" name="password" required onblur="check_password();">
+                                <span id="password"></span>
+                            </div>
+                        </div>
+                        
+                        <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit" id="btn" class="form-control"  onclick="mydialog();">Sign Up</button>      <br><br>               
+                        Don't have an account? <a href="{% url 'register'%}" target="blank"><strong>Register here</strong></a> instead.</div><br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+          
+                </form>
+            </div>
+        </div>
+       
+
+ <div class="footer" style="background-color:#595855";>
+      <div class="footer_text">
+        <br>
+        <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color:white";>About</h2>
+              <p>The company's spirit of entrepreneurship has also been evident in the investments it has made in early stage companies/start-up ventures to tap into the growing and vibrant Indian internet market.</p>
+             <!--  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md" style="color: white";>
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2" >Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2" style="color: white";>Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span>301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</li>
+                    <li><span class="icon icon-phone"></span>+91 9924790456</li>
+                    <li><span class="icon icon-envelope"></span>careerport19@gmail.com</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section></body>
+ </div>
+</html>
+    
+
+{% endblock %}

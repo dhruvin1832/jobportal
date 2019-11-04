@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JobPortal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'css/css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+
+    <style type="text/css">
+      .image{
+        padding-top: 0px;
+        margin-top: -80px;
+        margin-left:-90px;
+      }
+      .header{
+        background-color:#8F919B;
+        height: 100px;
+      }
+      .text{
+        padding-left: 350px;
+        margin-top: -60px;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        
+          
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-4 form-group">
+               <div class="image">
+               <img src="{% static 'css/images/logo.png' %}"/></div>
+              </div>
+          </div>
+
+          
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="row">
+              <div class="col-lg-8 form-group">
+                <div class="text">
+            <ul class="navbar-nav ml-auto">
+              
+              {% if myuser %}
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" >Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="{% url 'mcq' pk=myuser.pk %}"  class="nav-link">MCQ Test</a></li>
+                {% if myuser %}
+                  <li class="nav-item active">{{myuser.fname}}<a href="{% url 'logout' %}">Logout</a></li>
+            
+              {% endif %}
+              {% else %}
+
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Post a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'new-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login_company' %}">Login</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item cta mr-md-1">
+                <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              
+              </li>
+              {% endif %}
+              
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      </nav>
+    </div>
+    <!-- END nav -->
+
+    <div >
+      <div style="overflow: auto">
+       {% block content %}
+       {% endblock %}
+    </div>
+    </div>    
+
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'css/js/jquery.min.js'%}"></script>
+  <script src="{% static 'css/js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'css/js/popper.min.js '%}"></script>
+  <script src="{% static 'css/js/bootstrap.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.easing.1.3.js '%}"></script>
+  <script src="{% static 'css/js/jquery.waypoints.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.stellar.min.js '%}"></script>
+  <script src="{% static 'css/js/owl.carousel.min.js '%}"></script>
+  <script src="{% static 'css/js/jquery.magnific-popup.min.js '%}"></script>
+  <script src="{% static 'css/js/aos.js '%}"></script>
+  <script src="{% static 'css/js/jquery.animateNumber.min.js '%}"></script>
+  <script src="{% static 'css/js/bootstrap-datepicker.js '%}"></script>
+  <script src="{% static 'css/js/jquery.timepicker.min.js '%}"></script>
+  <script src="{% static 'css/js/scrollax.min.js '%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'css/js/google-map.js'%}"></script>
+  <script src="{% static 'css/js/main.js'%}"></script>
+    
+  </body>
+</html>

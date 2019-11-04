@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<body style="background-image:url('C:\Users\Lenovo\Desktop\bg.jpg');">
+    <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <form name='registration' method="POST" action="{% url 'index' %}" data-stellar-background-ratio="0.5"  onSubmit="return formValidation();">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-lg-6 form-group">
+                        <label for="email"><b>Email</b></label></td>
+                        <input type="text" placeholder="Enter Email" name="email" class="form-control" required onblur="check_email();">
+                        <span id="email"></span>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-lg-6 form-group">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password"  class="form-control" name="password" required onblur="check_password();">
+                    <span id="password"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                <div class="row">
+                <div class="col-lg-12 form-group">
+                <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit" id="btn">Sign Up</button>
+                Don't have an account? <a href="{% url 'register'%}" target="blank"><strong>Register here</strong></a> instead.
+
+            </div>
+        </div>
+    </div>
+            
+            </form>
+
+        </div>
+        </center>
+</body>
+</html>
+    
+
+{% endblock %}

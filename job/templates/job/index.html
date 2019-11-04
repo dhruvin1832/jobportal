@@ -1,0 +1,241 @@
+{% extends 'job/base.html' %}
+{% load static %}
+
+{% block content %}
+       
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style type="text/css">
+           /*.div1 {
+          width: 1025px;
+          height: 40px;
+          border: 1px;
+          font-size: 20px;
+          box-sizing: border-box;
+          margin-left: 10px;
+          margin-top: 5px;
+          padding-left: 10px;
+          background-color: #3498DB;
+          color: black;
+}
+.date{
+  color: red;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.p{
+  padding-left: 20px;
+}
+.main_p{
+  width: 1050px;
+  border: 5px groove white;
+  box-sizing: border-box;
+  background-color: #DCDCDC;
+}*/
+.flex-container {
+  display: flex;
+  /*background-color: DodgerBlue;*/
+}
+
+.flex-container > div {
+  background-color:#e5e3ff;
+  width: 450px;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+    </style> 
+
+  
+     <div class="container">
+       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+         <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+           <p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></p>
+            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Dream Job is Waiting</h1>
+           
+              <div class="col-md-12 tab-wrap" style=" background-color: white";>
+                  
+                  <div class="tab-content p-4" id="v-pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                      <form action="{% url 'search_job' %}" class="search-job" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md">
+                            <div class="form-group">
+                              <div class="form-field">
+                                <div class="icon"><span class="icon-briefcase"></span></div>
+                                <input type="text" class="form-control" placeholder="eg. Garphic. Web Developer" name="technology">
+                              </div>
+                            </div>
+                          </div>
+                          
+                          
+                          <div class="col-md">
+                            <div class="form-group">
+                              <div class="form-field">
+                                <input type="submit" value="Search" class="form-control btn btn-primary">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            <div class="col-lg-10">
+            <!--  <div style="overflow: auto;width: 1100px "> -->
+              <table>
+                <tr>
+
+              
+            {% if search_post %}
+             <!--  {% for job in search_post %}
+                
+              <td>              <div class="flex-container">
+              <div class="main_p">
+               <div class="div1" style="color: black";><a href="{% url 'company_details' pk=job.pk %}"><b>{{job.company_name}}&nbspHiring&nbspFor&nbsp{{ job.title }}<br></b></a>
+               <div style="font-size: 20px";>Vacancies : &nbsp {{ job.vacancies }} </b></div>
+               
+              {% if myuser %}
+
+                {% ifequal job.title applyjob.job %}
+                    <a href="{% url 'apply' pk1=job.pk pk2=myuser.pk %}" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Applied Already</a>
+                  {% else %}
+                    <a href="{% url 'apply' pk1=job.pk pk2=myuser.pk %}" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Apply</a>
+                {% endifequal %}
+
+
+              {% else %}
+                <div class="dropdown">&nbsp&nbsp
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              {% endif %}</td>
+                    </div>    
+              {% ifequal forloop.counter 0 %} 
+              </tr>
+              <tr>
+                <tr>
+
+              {% endifequal %}
+              {% endfor %}
+ -->            
+            {% else %}
+
+
+              {% for job in showpost %}
+
+              <td>              <div class="flex-container" style="height: 300px";>
+              <div class="main_p">
+               <div class="div1" style="color: black";><a href="{% url 'company_details' pk=job.pk %}"><b>{{job.company_name}}&nbspHiring&nbspFor&nbsp{{ job.title }}<br></b></a>
+               <div style="font-size: 20px";>Vacancies : &nbsp {{ job.vacancies }} </b></div>
+               <!-- <p class="p" style="color: black";> {{ job.description }}<br><br>
+                             Developers with&nbsp{{job.experiance}}&nbsp of experience at&nbsp {{ job.location }}. It would be offering &nbsp {{ job.salary }} &nbsp based on their performance and we have &nbsp {{ job.vacancies }} Vacancies <br>
+                             <div class="date">Last applied date &nbsp{{ job.last_date }}</div>
+                              
+                </p> -->
+              
+             
+              {% if myuser %}
+                {% ifequal job.title applyjob.job.title %}
+                  <a href="" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Applied Already</a>
+                {% else %}
+                  <a href="{% url 'apply' pk1=job.pk pk2=myuser.pk %}" class="btn btn-info btn-lg"  ><span class="glyphicon glyphicon-edit"></span>Apply</a>
+                {% endifequal %}
+              {% else %}
+                <div class="dropdown">&nbsp&nbsp
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Want a Job
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'job-post' %}">Registration</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              {% endif %}</td>
+                    </div>    
+              {% ifequal forloop.counter 0 %} 
+              </tr>
+              <tr>
+                <tr>
+
+              {% endifequal %}
+              {% endfor %}
+            {% endif %}
+              
+              <tr>
+              </tr>
+            </table>
+            </p>
+           
+            <br>
+            </div>
+           </div>           
+         </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="footer" style="background-color:#595855";>
+      <div class="footer_text">
+        <br>
+        <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>About</h2>
+              <p>The company's spirit of entrepreneurship has also been evident in the investments it has made in early stage companies/start-up ventures to tap into the growing and vibrant Indian internet market.</p>
+             <!--  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" style="color: white";>Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#"  class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2" style="color: white";>Workers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Register</a></li>
+                <li><a href="#" class="py-2 d-block">Job Search</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2" style="color: white";>Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span>301 Meghmalhar Complex, Sector: 11, next to Cinemax, PVR Cinemas, Gujarat,382010</li>
+                    <li><span class="icon icon-phone"></span>+91 9924790456</li>
+                    <li><span class="icon icon-envelope"></span>careerport19@gmail.com</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </head>
+  </html>
+{% endblock %}      
